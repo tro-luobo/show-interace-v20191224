@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+	<script src="http://lib.sinaapp.com/js/jquery/3.1.0/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src='http://lib.baomitu.com/zepto/1.1.7/zepto.min.js'></script>
+	<script type="text/javascript" src="https://g.alicdn.com/dingding/open-develop/1.5.1/dingtalk.js"></script>
+</head>
+<body>
+	test
+</body>
+	<script type="text/javascript">
+		dd.ready(function() {
+	        dd.runtime.permission.requestAuthCode({
+	            corpId: "ding396474b44d3d0e5735c2f4657eb6378f", // 企业id
+	            onSuccess: function (info) {
+		          	var code = info.code; // 通过该免登授权码可以获取用户身份
+		          	console.log(code);
+		          	login(code);
+	            }
+	        });
+	    });
+		
+		function login(userName){
+			$.ajax({
+	              url: "http://show.vaiwan.com/report/getData?oaAccount=" + userName,
+	              type: "GET",
+	              success: function (text) {
+	            	  console.log(JOSN.stringify(text));
+	              }
+	        });
+		}
+	</script>
+</html>
